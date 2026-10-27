@@ -1,0 +1,35 @@
+[project]
+name = "jobmail"
+version = "0.1.0"
+description = "Parse job-application mail exports and turn them into wrangling-friendly CSVs"
+requires-python = ">=3.11"
+dependencies = [
+    "google-genai>=1.0.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "playwright>=1.40.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.8.0",
+    "pytest>=8.0.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [".venv", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

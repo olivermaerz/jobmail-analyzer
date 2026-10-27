@@ -1,0 +1,27 @@
+---
+description: Conventions for the job-application mail analyzer
+alwaysApply: true
+---
+
+# jobmail project rules
+
+## Voice
+Comments, docstrings, README, and log messages should sound like a human engineer writing for their future self — direct, slightly informal. No LLM filler ("In order to…", "It is important to note…", "comprehensive solution", cheerful emoji spam, or restating the obvious). Write as I would.
+
+## Style
+- Strict PEP8 via Ruff (`make lint`). Don't leave formatting drift.
+- Type hints on public functions.
+- Extra "why" comments on matching, enrich status, and plugin boundaries — not a play-by-play of every line.
+
+## Architecture
+- New mail formats = new ingest plugin under `jobmail/ingest/`. Do not fork the classify/cluster/enrich pipeline.
+- Downstream only sees `RawEmail`. Apple/Gmail/Outlook quirks stay inside the plugin.
+- Incremental key is `Message-ID`. Enrich cache statuses: `extracted` / `inactive` (terminal) / `retry` (try again next run).
+
+## Secrets & data
+- Never commit `.env`, real `mbox`, or `data/`.
+- Don't log full email bodies unless `--debug`.
+- Test fixtures stay anonymized (fake ids/addresses).
+
+## Outputs
+Always regenerate `events.jsonl`, `events.csv`, `applications.csv`, `applications.json`, `stats.json` on a successful run.

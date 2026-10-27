@@ -1,0 +1,26 @@
+# Local environment files and mail dumps
+.env
+.env.*
+!.env.example
+mbox
+table_of_contents
+*.mbox
+improvements.md
+
+# Pipeline output / caches
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+.DS_Store
