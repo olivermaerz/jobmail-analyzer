@@ -1,6 +1,6 @@
 # jobmail
 
-I got tired of losing track of applications in my inbox. This digests an Apple Mail mbox, asks Gemini what each mail means, groups them into applications, optionally scrapes the job ad for skills/pay, and dumps CSV/JSON that can then be further analyzed.
+Losing track of job applications in your inbox? This Python script digests an Apple Mail mbox, classiefies each mail and extracts data via an LLM, groups them into job applications, scrapes the job ad for skills/pay (if a url is in the email), and creates a report as a CSV file that can then be further analyzed.
 
 ## Setup
 
